@@ -30,7 +30,7 @@ class DashboardPostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.posts.create',[
+        return view('dashboard.posts.create', [
             'categories' => Category::all()
         ]);
     }
@@ -50,7 +50,7 @@ class DashboardPostController extends Controller
             'body' => 'required'
         ]);
 
-        $validatedData['user_id'] = auth()->user->id;
+        $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
 
         Post::create($validatedData);
@@ -58,12 +58,12 @@ class DashboardPostController extends Controller
         return redirect('/dashboard/posts')->with('success', 'New post has been added!');
     }
 
-
+    
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response 
      */
     public function show(Post $post)
     {
