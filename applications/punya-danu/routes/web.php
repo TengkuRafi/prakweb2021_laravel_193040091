@@ -11,6 +11,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardPostController;
 
 
+ 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,22 +24,22 @@ use App\Http\Controllers\DashboardPostController;
 */
 
 Route::get('/', function () {
-    return view ('home',[
+    return view('home', [
         "title" => "Home",
-        "active" => 'home'
-
+        "active" =>"home"
     ]);
 });
 
 Route::get('/about', function () {
-    return view ('about', [
+    return view('about', [
         "title" => "About",
-        "active" => 'about',
-        "name" => "Tengku Muhammad Rafi",
-        "email" => "tengku745@gmail.com",
-        "image" => "gampah.jpg"
+        "active" =>"about",
+        "name" => "Danu Mardiko",
+        "email" => "danumardiko123@gmail.com",
+        "image" => "28.jpg"
     ]);
 });
+
 
 
 
@@ -66,5 +67,7 @@ Route::get('/dashboard', function(){
     return view('dashboard.index');
 })->middleware('auth');
 
-Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
+Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSLug'])->middleware('auth');
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+
+ 
